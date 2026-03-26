@@ -27,7 +27,9 @@ def main():
             speak("Yes?")
             command = listen()
 
-           
+        if is_exit(command):
+                speak("Goodbye!") 
+                break
 
             response = process_command(command)
             speak(response)
