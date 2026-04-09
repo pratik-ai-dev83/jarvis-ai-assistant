@@ -57,7 +57,18 @@ def run_jarvis():
     elif "open code" in command:
       os.system("code")
 
-    elif "play song" in command:
+    elif "play music" in command:
+       speak("Wich song do you want to play?")
+       song_name = take_command().lower()
+
+      if song_name:
+        url = f"fttps://open.spotify.com/search/{song_name}"
+        webbroser.open(url)
+        speak(f"Playing {song_name} on Spotify")
+    else:
+      speak("Song name not recogized")
+      
+      
       
 
    
