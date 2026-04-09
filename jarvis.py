@@ -57,7 +57,7 @@ def run_jarvis():
     elif "open code" in command:
       os.system("code")
 
-    elif "play music" in command:
+    elif "play music" in command or "Play song" in command:
        speak("Wich song do you want to play?")
        song_name = take_command().lower()
 
@@ -67,7 +67,18 @@ def run_jarvis():
         speak(f"Playing {song_name} on Spotify")
     else:
       speak("Song name not recogized")
-      
+
+elif "exit" in command or "stop" in command:
+  speak("Good bye!")
+  break
+
+elif command != "none":
+  speak("I can serch tht for you")
+  webbrower.open(f"https//www.google.com/search?q={command}")
+
+
+if ___name__ == "__main__":
+  run_jarvis()
       
       
 
