@@ -7,79 +7,77 @@ import os
 engine = pyttsx3.init()
 
 def speak(text):
-  print("jarvis:", text)
-  engine.say(text)
-  engine.runAndWait()
+    print("Jarvis:", text)
+    engine.say(text)
+    engine.runAndWait()
 
 def take_command():
-  r = sr.Recognizer()
+    r = sr.Recognizer()
 
-with sr.Microphone() as source:
-  print("Listening...")
-  r.pause_threshold = 1
-  audio = r.listen(source)
-  try:
-    print("Recognizing..")
-    command = r.recognize_google(audio, language='en-in')
-    print("You said:", command)
-  except Exception:
-    speak("Sorry, I didn't understand.")
-    return "none"
+    with sr.Microphone() as source:
+        print("Listening...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
 
-  return command.lower()
+    try:
+        print("Recognizing...")
+        command = r.recognize_google(audio, language='en-in')
+        print("You said:", command)
+    except Exception:
+        speak("Sorry, I didn't understand.")
+        return "none"
 
+    return command.lower()
 
-def which_user():
-  hour = datetime.datetime.now().hour
+def wish_user():
+    hour = datetime.datetime.now().hour
 
-  if hour < 12:
-    speak("Good morning")
-  elif hour < 18:
-    speak("Good afternoon")
-  else:
-    speak("I am Jarvis. How can i help you?")
+    if hour < 12:
+        speak("Good morning")
+    elif hour < 18:
+        speak("Good afternoon")
+    else:
+        speak("Good evening")
 
+    speak("I am Jarvis. How can I help you?")
 
 def run_jarvis():
-  while True:
-    command = take_command()
+    wish_user()
 
-    if "time" in command:
-      time = datetime.datetime.now().strftime("%H:%M")
-      speak(f"The time is {time}")
+    while True:
+        command = take_command()
 
-    elif"open youtube" in command:
-      webbrowser.open("https://youtubr.com")
+        if "time" in command:
+            current_time = datetime.datetime.now().strftime("%H:%M")
+            speak(f"The time is {current_time}")
 
-    elif "open google" in command:
-      webbrowser.open("https://github.com")
+        elif "open youtube" in command:
+            webbrowser.open("https://youtube.com")
 
-    elif "open code" in command:
-      os.system("code")
+        elif "open google" in command:
+            webbrowser.open("https://google.com")
 
-    elif "play music" in command or "Play song" in command:
-       speak("Which song do you want to play?")
-       song_name = take_command().lower()
+        elif "open code" in command:
+            os.system("code")
 
-      if song_name:
-        url = f"https://open.spotify.com/search/{song_name}"
-        webbrowser.open(url)
-        speak(f"Playing {song_name} on Spotify")
-    else:
-      speak("Song name not recogized")
+        elif "play music" in command or "play song" in command:
+            speak("Which song do you want to play?")
+            song_name = take_command()
 
-elif "exit" in command or "stop" in command:
-  speak("Good bye!")
-  break
+            if song_name != "none":
+                url = f"https://open.spotify.com/search/{song_name}"
+                webbrowser.open(url)
+                speak(f"Playing {song_name} on Spotify")
+            else:
+                speak("Song name not recognized")
 
-elif command != "none":
-  speak("I can search that for you")
-  webbrowser.open(f"https://www.google.com/search?q={command}")
+        elif "exit" in command or "stop" in command:
+            speak("Goodbye!")
+            break
 
+        elif command != "none":
+            speak("I can search that for you")
+            webbrowser.open(f"https://www.google.com/search?q={command}")
 
 if __name__ == "__main__":
-  run_jarvis()
-      
-      
-
-   
+    run_jarvis()
