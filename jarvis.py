@@ -29,7 +29,7 @@ with sr.Microphone() as source:
   return command.lower()
 
 
-def wish_user():
+def which_user():
   hour = datetime.datetime.now().hour
 
   if hour < 12:
@@ -63,7 +63,7 @@ def run_jarvis():
 
       if song_name:
         url = f"https://open.spotify.com/search/{song_name}"
-        webbroser.open(url)
+        webbrowser.open(url)
         speak(f"Playing {song_name} on Spotify")
     else:
       speak("Song name not recogized")
@@ -74,10 +74,10 @@ elif "exit" in command or "stop" in command:
 
 elif command != "none":
   speak("I can serch tht for you")
-  webbrowser.open(f"https//www.google.com/search?q={command}")
+  webbrowser.open(f"https://www.google.com/search?q={command}")
 
 
-if __name_ == "__main__":
+if _name_ == "__main__":
   run_jarvis()
       
       
