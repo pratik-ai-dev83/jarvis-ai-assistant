@@ -58,7 +58,7 @@ def run_jarvis():
       os.system("code")
 
     elif "play music" in command or "Play song" in command:
-       speak("Wich song do you want to play?")
+       speak("Which song do you want to play?")
        song_name = take_command().lower()
 
       if song_name:
