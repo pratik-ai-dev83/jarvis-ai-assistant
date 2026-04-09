@@ -26,4 +26,38 @@ with sr.Microphone() as source:
     speak("Sorry, I didn't understand.")
     return "none"
 
-return commnd.lower()
+  return commnd.lower()
+
+
+def wish_user():
+  hoyr = datetime.datetime.now().hour
+
+  if hour < 12:
+    speak("Good morning")
+  elif hour < 18:
+    speak("Good afternoon")
+  else:
+    speak("I am Jarvis. How can i help you?")
+
+
+def run_jarvis():
+  while true:
+    command = take_command()
+
+    if "time" in command:
+      time = datetime.datetime.now().strftime("%H:%M")
+      speak(f"The time is {time}")
+
+    elif"open youtube" in command:
+      webbrowser.open("https://youtubr.com")
+
+    elif "open google" in command:
+      webbrowser.open("https://github.com")
+
+    elif "open code" in command:
+      os.system("code")
+
+    elif "play song" in command:
+      
+
+   
