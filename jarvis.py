@@ -73,7 +73,7 @@ elif "exit" in command or "stop" in command:
   break
 
 elif command != "none":
-  speak("I can serch tht for you")
+  speak("I can search that for you")
   webbrowser.open(f"https://www.google.com/search?q={command}")
 
 
