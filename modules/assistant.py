@@ -25,5 +25,16 @@ def load_memory():
     def recall(key):
         data = load_memory()
         return data.get(key)
-    
-    
+
+def process_command(command):
+    if not command:
+        return "I didn't catch that"
+
+command = command.lower()
+
+if "my name id" in command:
+    name = command.replace("my name is", "").strip()
+    remember("name", name)
+    return f"Nice to meet you {name}"
+
+
