@@ -32,9 +32,26 @@ def process_command(command):
 
 command = command.lower()
 
-if "my name id" in command:
+if "my name is" in command:
     name = command.replace("my name is", "").strip()
     remember("name", name)
     return f"Nice to meet you {name}"
 
+elif "i like" in command:
+    like = command.replace("i like", "").strip()
+    remember("like", like)
+    return f"I will remember that you like {like}"
+
+elif "what do i like" in command:
+    like = recall("like")
+    return f"You like {like}" if like else "I don't know what you like yet"
+
+elif "time" in command:
+    current_time = datetime.datatime.now().strftime("%H:%M:%S")
+    return f"The time is {current_time}"
+
+elif "youtube" in command:
+    webbrowser.open("https://www.youtube.com")
+    return "Opening Youtube..."
+    
 
