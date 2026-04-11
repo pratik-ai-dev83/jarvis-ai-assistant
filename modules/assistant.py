@@ -59,7 +59,29 @@ elif "google" in command:
     return "Opening Google..."
 
 elif "search" in command:
-    query = cpmmand.replace("search", "").strip()
+    query = command.replace("search", "").strip()
 
     if query:
         encoded = urllib.parse.quote(query)
+        url = f"https://www.google.com/search?q={encoded}"
+        webbrowser.open(url)
+        return f"Searching for {query}"
+
+else:
+    return "What should I search?"
+
+elif "play" in command:
+   song = command.replace("play", "").strip()
+
+   if song:
+       encoded = urllib.parse.quote(song)
+       url = f"https://www.youtube.com/results?search_query={encoded}"
+       webbrowser.open(url)
+       return f"Playing {song}"
+   else: 
+       return "Which song should I play?"
+
+
+
+
+
